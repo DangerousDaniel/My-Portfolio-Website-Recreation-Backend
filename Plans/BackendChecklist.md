@@ -8,6 +8,7 @@
   - [ ] Setup Django
 
 - [ ] Backend Functionary 1.0
+  - [ ] Back-end Plan
   - [ ] Create Model from ERD
   - [ ] Relationship Models
   - [ ] Category CRUD
