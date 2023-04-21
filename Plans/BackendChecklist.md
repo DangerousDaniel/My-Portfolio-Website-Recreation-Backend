@@ -3,14 +3,14 @@
   - [x] Rough Daft 
   - [ ] Final Daft
 
-- [ ] Project Setup
+- [x] Project Setup
   - [x] Create Backend Repo 
-  - [ ] Setup Django
+  - [x] Setup Django
 
 - [ ] Backend Functionary 1.0
   - [x] Back-end Plan
-  - [ ] Create Model from ERD
-  - [ ] Relationship Models
+  - [x] Create Model from ERD
+  - [x] Relationship Models
   - [ ] Category CRUD
   - [ ] Article CRUD
   - [ ] Page Context CRUD
