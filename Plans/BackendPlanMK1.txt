@@ -1,18 +1,18 @@
 
 Category
-    GET: category/all
+    GET: category/all (Done)
         get all category
 
-    GET: category/detail/<id>
+    GET: category/detail/<id> (Done)
         get a category by id
 
-    POST: category/create
+    POST: category/create (Done)
         create a category
 
-    PUT: category/update/<id>
+    PUT: category/update/<id> (Done)
         update a category
 
-    DElETE: category/delete/<id>
+    DElETE: category/delete/<id> (Done)
         delete a category
 
 Page

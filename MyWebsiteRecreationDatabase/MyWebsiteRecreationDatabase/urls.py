@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework.urlpatterns import format_suffix_patterns
+from MyWebsiteRecreationDatabase.views import views_category
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('category/all', views_category.category_all),
+    path('category/detail/<int:id>', views_category.category_detail),
+    path('category/create', views_category.category_create),
+    path('category/update/<int:id>', views_category.category_update),
+    path('category/delete/<int:id>', views_category.category_delete),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
