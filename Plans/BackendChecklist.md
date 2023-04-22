@@ -11,6 +11,7 @@
   - [x] Back-end Plan
   - [x] Create Model from ERD
   - [x] Relationship Models
+  - [x] Serialize All Data From Python object to JSON
   - [ ] Category CRUD
   - [ ] Article CRUD
   - [ ] Page Context CRUD
