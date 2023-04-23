@@ -9,7 +9,6 @@
 
 - [ ] Custom Admin Panel
   - [ ] Custom Form for Article with relationship input data 
-  - [ ] Override the delete function for Article 
   - [ ] Custom name of the admin panel
   - [ ] Organize the side panel of models with section for main and other 
 
@@ -18,5 +17,6 @@
   - [x] Create Model from ERD
   - [x] Relationship Models
   - [x] Serialize All Data From Python object to JSON
+  - [ ] Override the delete function for Article 
   - [ ] Article CRUD
 
