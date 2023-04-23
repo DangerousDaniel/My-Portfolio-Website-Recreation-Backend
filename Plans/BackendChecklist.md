@@ -7,15 +7,16 @@
   - [x] Create Backend Repo 
   - [x] Setup Django
 
+- [ ] Custom Admin Panel
+  - [ ] Custom Form for Article with relationship input data 
+  - [ ] Override the delete function for Article 
+  - [ ] Custom name of the admin panel
+  - [ ] Organize the side panel of models with section for main and other 
+
 - [ ] Backend Functionary 1.0
   - [x] Back-end Plan
   - [x] Create Model from ERD
   - [x] Relationship Models
   - [x] Serialize All Data From Python object to JSON
-  - [x] Category CRUD
   - [ ] Article CRUD
-  - [ ] Page Context CRUD
-  - [ ] Page List CRUD
-  - [ ] Page CRUD
-  - [ ] Resource List CRUD
-  - [ ] Resource CRUD
+
