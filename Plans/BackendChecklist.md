@@ -17,7 +17,7 @@
   - [x] Create Model from ERD
   - [x] Relationship Models
   - [x] Serialize All Data From Python object to JSON
-  - [ ] Override the delete function for Article 
   - [x] Category CRUD
+  - [ ] Override the delete function for Article 
   - [ ] Article CRUD
 
