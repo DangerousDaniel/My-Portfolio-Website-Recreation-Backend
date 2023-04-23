@@ -8,7 +8,7 @@
   - [x] Setup Django
 
 - [ ] Custom Admin Panel
-  - [ ] Custom Form for Article with relationship input data 
+  - [x] Custom Form for Article with relationship input data 
   - [ ] Custom name of the admin panel
   - [ ] Organize the side panel of models with section for main and other 
 
