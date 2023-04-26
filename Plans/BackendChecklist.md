@@ -18,3 +18,14 @@
   - [x] Category CRUD
   - [ ] Article CRUD
 
+- [ ] Pubic Read Me
+  - [ ] About the repo
+  - [ ] HTPP Calls information 
+  - [ ] Backend link and Adnim username is available upon request.
+  - [ ] Term and Conditions
+
+
+
+
+
+
