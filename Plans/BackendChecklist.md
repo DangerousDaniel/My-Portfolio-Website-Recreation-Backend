@@ -16,6 +16,5 @@
   - [x] Relationship Models
   - [x] Serialize All Data From Python object to JSON
   - [x] Category CRUD
-  - [ ] Override the delete function for Article 
   - [ ] Article CRUD
 
