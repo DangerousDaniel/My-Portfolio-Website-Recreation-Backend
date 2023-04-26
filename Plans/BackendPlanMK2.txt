@@ -4,13 +4,13 @@ Category
         get all category
         
 Article
-    GET: article/all (Dane)
+    GET: article/all (Done)
         get all article
 
-    GET: article/all/quick-view/<category_id>/
+    GET: article/all/quick-view/<category_id_input>/ (Done)
         get all article by category
 
-    GET: article/all/quick-view/<category_id>/<offsetNum>/<limitNum>
+    GET: article/all/quick-view/<category_id>/<offset_num>/<limit_num> (Done)
         This is same one as above but you can limit the row and offset them by user inputs.
         get all article by category limit <limitNum> offset <offsetNum>
             

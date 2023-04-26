@@ -5,7 +5,7 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self) -> str:
-        return f"{self.category_id} | {self.name}"
+        return f"{self.name}"
 
 class Page(models.Model):
     page_id =  models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -13,7 +13,7 @@ class Page(models.Model):
     image_file = models.CharField(max_length=255, blank=True)
 
     def __str__(self) -> str:
-        return f"{self.page_id} | {self.paragraph} | {self.image_file}"
+        return f"{self.paragraph} | {self.image_file}"
 
 class Resource(models.Model):
     resource_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -21,7 +21,7 @@ class Resource(models.Model):
     link = models.CharField(max_length=255)
 
     def __str__(self) -> str:
-        return f"{self.resource_id} | {self.name} | {self.link}"
+        return f"{self.name} | {self.link}"
 
 class Article(models.Model):
     article_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -34,7 +34,7 @@ class Article(models.Model):
     date_last_update = models.DateField(auto_created=True)
 
     def __str__(self) -> str:
-        return f"{self.article_id} | {self.name} | {self.author} | {self.image_preview} | {self.category_id} | {self.date_created} | {self.date_last_update}"
+        return f"{self.name} | {self.author} | {self.image_preview} | {self.category_id} | {self.date_created} | {self.date_last_update}"
 
 class Page_List(models.Model):
     page_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -42,7 +42,7 @@ class Page_List(models.Model):
     article_id = models.ForeignKey(Article, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
-        return f"{self.page_list_id} | {self.page_id} | {self.article_id}"
+        return f"{self.page_id} | {self.article_id}"
 
 class Resource_List(models.Model):
     resource_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -50,7 +50,7 @@ class Resource_List(models.Model):
     article_id = models.ForeignKey(Article, on_delete=models.PROTECT)
     
     def __str__(self) -> str:
-        return f"{self.resource_list_id} | {self.resource_id} | {self.article_id}"
+        return f"{self.resource_id} | {self.article_id}"
 
 
 

@@ -24,6 +24,9 @@ urlpatterns = [
 
     path('category/all', views_category.category_all),
     path('article/all', views_article.article_all),
+    path('article/all/quick-view/<int:category_id_input>', views_article.article_all_quick_view),
+    path('article/all/quick-view/<int:category_id_input>/<int:offset_num>/<int:limit_num>', views_article.article_all_quick_view),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
