@@ -14,7 +14,7 @@ Article
         This is same one as above but you can limit the row and offset them by user inputs.
         get all article by category limit <limitNum> offset <offsetNum>
             
-    GET: article/detail/<id>
+    GET: article/detail/<id> (Done)
         get a article by id
             join 
                 page list

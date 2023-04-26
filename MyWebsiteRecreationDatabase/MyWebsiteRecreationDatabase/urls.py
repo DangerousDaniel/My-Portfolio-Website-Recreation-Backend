@@ -26,6 +26,7 @@ urlpatterns = [
     path('article/all', views_article.article_all),
     path('article/all/quick-view/<int:category_id_input>', views_article.article_all_quick_view),
     path('article/all/quick-view/<int:category_id_input>/<int:offset_num>/<int:limit_num>', views_article.article_all_quick_view),
+    path('article/detail/<int:id>', views_article.article_detail),
 
 ]
 
