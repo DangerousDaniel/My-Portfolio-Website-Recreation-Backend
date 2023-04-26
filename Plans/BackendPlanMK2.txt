@@ -7,7 +7,6 @@ Article
     GET: article/all
         get all article
             join 
-                category
                 page list
                 pages
                 resource list
@@ -15,27 +14,14 @@ Article
 
     GET: article/all/quick-view/<category_id>/
         get all article by category
-            join 
-                category
-                page list
-                pages
-                resource list
-                resources
 
     GET: article/all/quick-view/<category_id>/<offsetNum>/<limitNum>
         This is same one as above but you can limit the row and offset them by user inputs.
         get all article by category limit <limitNum> offset <offsetNum>
-            join 
-                category
-                page list
-                pages
-                resource list
-                resources
-
+            
     GET: article/detail/<id>
         get a article by id
             join 
-                category
                 page list
                 pages
                 resource list
@@ -44,7 +30,6 @@ Article
     DElETE: article/delete-relationship-data/<id>
         delete article 
         delete article relationship with the article 
-            page_context_id
             page_list_id
             page_id
             resource_list_id
