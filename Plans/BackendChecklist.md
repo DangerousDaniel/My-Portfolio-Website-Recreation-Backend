@@ -17,11 +17,12 @@
   - [x] Serialize All Data From Python object to JSON
   - [x] Category CRUD
   - [ ] Article CRUD
+  - [ ] Code Clean Up
 
 - [ ] Pubic Read Me
-  - [ ] About the repo
-  - [ ] HTPP Calls information 
-  - [ ] Backend link and Adnim username is available upon request.
+  - [ ] About The Repo
+  - [ ] HTTP Calls Information 
+  - [ ] Backend link and Admin username is available upon request.
   - [ ] Term and Conditions
 
 

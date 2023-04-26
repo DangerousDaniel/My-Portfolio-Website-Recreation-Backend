@@ -29,7 +29,7 @@ class Article(models.Model):
     author = models.CharField(max_length=255)
     summary = models.TextField()
     image_preview = models.CharField(max_length=255)
-    category_id = models.OneToOneField(Category, on_delete=models.PROTECT)
+    category_id = models.ForeignKey(Category, on_delete=models.PROTECT)
     date_created = models.DateField()
     date_last_update = models.DateField(auto_created=True)
 
@@ -38,7 +38,7 @@ class Article(models.Model):
 
 class Page_List(models.Model):
     page_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    page_id = models.ManyToManyField(Page)
+    page_id = models.ForeignKey(Page, on_delete=models.PROTECT)
     article_id = models.ForeignKey(Article, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
@@ -46,7 +46,7 @@ class Page_List(models.Model):
 
 class Resource_List(models.Model):
     resource_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    resource_id = models.ManyToManyField(Resource)
+    resource_id = models.ForeignKey(Resource, on_delete=models.PROTECT)
     article_id = models.ForeignKey(Article, on_delete=models.PROTECT)
     
     def __str__(self) -> str:

@@ -4,13 +4,8 @@ Category
         get all category
         
 Article
-    GET: article/all
+    GET: article/all (Dane)
         get all article
-            join 
-                page list
-                pages
-                resource list
-                resources
 
     GET: article/all/quick-view/<category_id>/
         get all article by category

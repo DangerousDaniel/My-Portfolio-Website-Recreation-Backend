@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from MyWebsiteRecreationDatabase.views import views_category
+from MyWebsiteRecreationDatabase.views import views_article
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('category/all', views_category.category_all),
+    path('article/all', views_article.article_all),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
