@@ -46,7 +46,7 @@ def article_all_quick_view(request, category_id_input, offset_num=0, limit_num=1
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        articles = Article.objects.filter(category_id=category_id_input)[offset_num:limit_num]
+        articles = Article.objects.filter(category_id=category_id_input).order_by('date_last_update').reverse()[offset_num:limit_num]
 
         serializer = ArticleSerializer(articles, many=True)
 
