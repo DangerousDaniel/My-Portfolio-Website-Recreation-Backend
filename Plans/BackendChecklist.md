@@ -10,7 +10,7 @@
 - [x] Custom Admin Panel
   - [x] Custom Form for Article with relationship input data 
 
-- [ ] Backend Functionary 1.0
+- [x] Backend Functionary 1.0
   - [x] Back-end Plan
   - [x] Create Model from ERD
   - [x] Relationship Models
