@@ -1,11 +1,11 @@
-# My Protfolio Website Recreation Backend
+# My Portfolio Website Recreation Backend
 
-Welcome to the backend repo for my profolio website creation.
+Welcome to the backend repo for my portfolio website creation.
 
 ## About
-This backend repo is the Django Python Web Framework with the Django REST Framework to create a REST API for a backend databse of the CRUD (Create, Read, Update, Delete) fucntionallty.
+This backend repo is the Django Python Web Framework with the Django REST Framework to create a REST API for a backend database of the CRUD (Create, Read, Update, Delete) functionally.
 
-## Backend Resoucre 
+## Backend Resource  
 ### My ERD
 ![My ERD Mark 2](Plans/ERD/My%20Portfolio%20Website%20Recreation%20-%20Database%20ERD%20-%20Mark%202.jpg)
 
@@ -17,6 +17,6 @@ This backend repo is the Django Python Web Framework with the Django REST Framew
 ### [Django](https://www.djangoproject.com/) 
 ### [Django REST Framework](https://www.django-rest-framework.org/)
 
-## Term and Coditions
-This backend repo is a protfolio pice for my website recreation. You may read the code, and use in other repos as long modfty it for your needs. You may test out the REST API for read function of the backend website, but other CURD functionlty must be test by a fock and clone to down to a your computer. The backend link and admin username is avaviable upon request. This repo is own by Daniel Cox and copyright urder the stand licsence of insal copyright licence.
+## Term and Conditions
+This backend repo is a portfolio pice for my website recreation. You may read the code, and use in other repos as long modify it for your needs. You may test out the REST API for read function of the backend website, but other CURD functionally must be test by a fork and clone to down to a your computer. The backend link and admin username is available upon request. This repo is own by Daniel Cox and copyright under the stand copyright license.
 

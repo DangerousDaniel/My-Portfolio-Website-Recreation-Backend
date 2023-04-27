@@ -19,11 +19,11 @@
   - [x] Article CRUD
   - [x] Code Clean Up
 
-- [ ] Pubic Read Me
-  - [ ] About The Repo
-  - [ ] HTTP Calls Information 
-  - [ ] Backend link and Admin username is available upon request.
-  - [ ] Term and Conditions
+- [x] Pubic Read Me
+  - [x] About The Repo
+  - [x] HTTP Calls Information 
+  - [x] Resources
+  - [x] Term and Conditions
 
 
 
