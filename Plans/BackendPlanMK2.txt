@@ -22,10 +22,8 @@ Article
                 resource list
                 resources
 
-    DElETE: article/delete-relationship-data/<id>
+    DElETE: article/delete-relationship-data/<id> (Done)
         delete article 
         delete article relationship with the article 
             page_list_id
-            page_id
             resource_list_id
-            resource_id

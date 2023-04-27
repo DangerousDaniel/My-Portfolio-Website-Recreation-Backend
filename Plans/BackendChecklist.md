@@ -16,7 +16,7 @@
   - [x] Relationship Models
   - [x] Serialize All Data From Python object to JSON
   - [x] Category CRUD
-  - [ ] Article CRUD
+  - [x] Article CRUD
   - [ ] Code Clean Up
 
 - [ ] Pubic Read Me

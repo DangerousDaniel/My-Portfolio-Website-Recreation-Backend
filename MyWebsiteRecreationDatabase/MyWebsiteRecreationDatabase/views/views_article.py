@@ -32,8 +32,8 @@ def article_all_quick_view(request, category_id_input, offset_num=0, limit_num=1
         category = Category.objects.get(pk=category_id_input)
     except Category.DoesNotExist:
         database_message_json= {'Database Message': f"No data found for this id in the {Category.__name__} table."}
-        response = database_message_json
-        return Response(response, status=status.HTTP_404_NOT_FOUND)
+        response_json = database_message_json
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         articles = Article.objects.filter(category_id=category_id_input)[offset_num:limit_num]
@@ -52,22 +52,22 @@ def article_detail(request, id, format=None):
         article = Article.objects.get(pk=id)
     except Article.DoesNotExist:
         database_message_json= {'Database Message': f"No data found for this id in the {Article.__name__} table."}
-        response = database_message_json
-        return Response(response, status=status.HTTP_404_NOT_FOUND)
+        response_json = database_message_json
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
     
     try: 
         page_list = Page_List.objects.filter(article_id=id)
     except Page_List.DoesNotExist:
         database_message_json= {'Database Message': f"No data found for this id in the {Page_List.__name__} table."}
-        response = database_message_json
-        return Response(response, status=status.HTTP_404_NOT_FOUND)
+        response_json = database_message_json
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
     try: 
         resource_list = Resource_List.objects.filter(article_id=id)
     except Resource_List.DoesNotExist:
         database_message_json= {'Database Message': f"No data found for this id in the {Resource_List.__name__} table."}
-        response = database_message_json
-        return Response(response, status=status.HTTP_404_NOT_FOUND)
+        response_json = database_message_json
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
         articleSerializer = ArticleSerializer(article)
@@ -95,10 +95,38 @@ def article_detail(request, id, format=None):
         return Response(response_json)
 
 
+@api_view(['DELETE'])
+def article_delete_relationship_data(request, id, format=None):
+    try:
+        article = Article.objects.get(pk=id)
+    except Article.DoesNotExist:
+        database_message_json= {'Database Message': f"No data found for this id in the {Article.__name__} table."}
+        response_json = database_message_json
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
+    
+    try: 
+        page_list = Page_List.objects.filter(article_id=id)
+    except Page_List.DoesNotExist:
+        database_message_json= {'Database Message': f"No data found for this id in the {Page_List.__name__} table."}
+        response_json = database_message_json
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
+    try: 
+        resource_list = Resource_List.objects.filter(article_id=id)
+    except Resource_List.DoesNotExist:
+        database_message_json= {'Database Message': f"No data found for this id in the {Resource_List.__name__} table."}
+        response_json = database_message_json
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method == 'DELETE':
+        page_list.delete()
+        resource_list.delete()
+        article.delete()
+        
+        database_message_json = {'Database Message':  f"Data has successfully delete for this id in the {Article.__name__} and the relationship tables." }
 
-        
-        
+        response_json = [database_message_json]
+        return Response(response_json)
 
             
 
