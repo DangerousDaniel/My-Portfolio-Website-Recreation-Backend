@@ -1,3 +1,13 @@
+"""
+    Project Name: My Portfolio Website Recreation
+    Authors: Daniel Cox
+    Created Date: April 21, 2023
+    Last Updated: April 26, 2023
+    Description: This class is where you create all the urls for your REST API.
+    Notes:
+    Resources: 
+ """
+
 """MyWebsiteRecreationDatabase URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:

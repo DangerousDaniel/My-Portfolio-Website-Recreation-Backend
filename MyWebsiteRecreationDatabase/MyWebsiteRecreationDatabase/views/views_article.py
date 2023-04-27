@@ -1,3 +1,13 @@
+"""
+    Project Name: My Portfolio Website Recreation
+    Authors: Daniel Cox
+    Created Date: April 26, 2023
+    Last Updated: April 26, 2023
+    Description: This is the class for article views.
+    Notes:
+    Resources: 
+ """
+
 from ..models import Article
 from ..models import Page_List
 from ..models import Resource_List

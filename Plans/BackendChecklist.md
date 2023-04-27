@@ -17,7 +17,7 @@
   - [x] Serialize All Data From Python object to JSON
   - [x] Category CRUD
   - [x] Article CRUD
-  - [ ] Code Clean Up
+  - [x] Code Clean Up
 
 - [ ] Pubic Read Me
   - [ ] About The Repo

@@ -1,3 +1,13 @@
+"""
+    Project Name: My Portfolio Website Recreation
+    Authors: Daniel Cox
+    Created Date: April 8, 2023
+    Last Updated: April 21, 2023
+    Description: This where you create the table for the database.
+    Notes:
+    Resources: 
+ """
+
 from django.db import models
 
 class Category(models.Model):
