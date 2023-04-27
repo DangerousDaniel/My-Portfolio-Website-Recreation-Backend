@@ -1,7 +1,7 @@
 # Back-end Checklist
-- [ ] ERD 
+- [x] ERD 
   - [x] Rough Daft 
-  - [ ] Final Daft
+  - [x] Final Daft
 
 - [x] Project Setup
   - [x] Create Backend Repo 
