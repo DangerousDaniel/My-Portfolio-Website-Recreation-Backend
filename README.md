@@ -7,13 +7,13 @@ This backend repo is the Django Python Web Framework with the Django REST Framew
 
 ## Backend Resource  
 ### My ERD
-![My ERD Mark 2](Plans/ERD/My%20Portfolio%20Website%20Recreation%20-%20Database%20ERD%20-%20Mark%202.jpg)
+![My ERD Mark 2](Plans\ERD\myPortfolio Website RecreationDatabaseERDMark2.jpg)
 
-### [HTTP Calls Plan](https://github.com/DangerousDaniel/My-Portfolio-Website-Recreation-Backend/blob/Daniel/Plans/BackendPlanMK3.1.txt)
+### [HTTP Calls Plan](Plans\backendPlanMark3.2.txt)
 
-### [Backend Checklist](https://github.com/DangerousDaniel/My-Portfolio-Website-Recreation-Backend/blob/Daniel/Plans/BackendChecklist.md)
+### [Backend Checklist](Plans/backendChecklist.md)
 
-## Framework Resoucres
+## Framework Resources
 ### [Django](https://www.djangoproject.com/) 
 ### [Django REST Framework](https://www.django-rest-framework.org/)
 

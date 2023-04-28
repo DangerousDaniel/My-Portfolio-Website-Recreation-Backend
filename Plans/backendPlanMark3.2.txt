@@ -7,7 +7,7 @@ Article
     GET: article/all (Done)
         get all article
 
-    GET: article/all/quick-view/<category_id_input>/ (Done)
+    GET: article/all/quick-view/category/<id> (Done)
         get all article by category order by date_last_update desc
 
     GET: article/all/quick-view/<category_id>/<offset_num>/<limit_num> (Done)

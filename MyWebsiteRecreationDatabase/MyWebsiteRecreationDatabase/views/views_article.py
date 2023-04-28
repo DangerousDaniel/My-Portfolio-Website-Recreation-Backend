@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 26, 2023
-    Last Updated: April 26, 2023
+    Last Updated: April 27, 2023
     Description: This is the class for article views.
     Notes:
     Resources: 
@@ -37,16 +37,16 @@ def article_all(request, format=None):
 
 
 @api_view(['GET'])
-def article_all_quick_view(request, category_id_input, offset_num=0, limit_num=10, format=None):
+def article_all_quick_view_category(request, id, offset_num=0, limit_num=10, format=None):
     try:
-        category = Category.objects.get(pk=category_id_input)
+        category = Category.objects.get(pk=id)
     except Category.DoesNotExist:
         database_message_json= {'Database Message': f"No data found for this id in the {Category.__name__} table."}
         response_json = database_message_json
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        articles = Article.objects.filter(category_id=category_id_input).order_by('date_last_update').reverse()[offset_num:limit_num]
+        articles = Article.objects.filter(category_id=id).order_by('date_last_update').reverse()[offset_num:limit_num]
 
         serializer = ArticleSerializer(articles, many=True)
 
@@ -65,21 +65,10 @@ def article_detail(request, id, format=None):
         response_json = database_message_json
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
     
-    try: 
-        page_list = Page_List.objects.filter(article_id=id)
-    except Page_List.DoesNotExist:
-        database_message_json= {'Database Message': f"No data found for this id in the {Page_List.__name__} table."}
-        response_json = database_message_json
-        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
-
-    try: 
-        resource_list = Resource_List.objects.filter(article_id=id)
-    except Resource_List.DoesNotExist:
-        database_message_json= {'Database Message': f"No data found for this id in the {Resource_List.__name__} table."}
-        response_json = database_message_json
-        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
-    
     if request.method == 'GET':
+        page_list = Page_List.objects.filter(article_id=id)
+        resource_list = Resource_List.objects.filter(article_id=id)
+
         articleSerializer = ArticleSerializer(article)
 
         pages = []
@@ -113,22 +102,11 @@ def article_delete_relationship_data(request, id, format=None):
         database_message_json= {'Database Message': f"No data found for this id in the {Article.__name__} table."}
         response_json = database_message_json
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
-    
-    try: 
-        page_list = Page_List.objects.filter(article_id=id)
-    except Page_List.DoesNotExist:
-        database_message_json= {'Database Message': f"No data found for this id in the {Page_List.__name__} table."}
-        response_json = database_message_json
-        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
-    try: 
-        resource_list = Resource_List.objects.filter(article_id=id)
-    except Resource_List.DoesNotExist:
-        database_message_json= {'Database Message': f"No data found for this id in the {Resource_List.__name__} table."}
-        response_json = database_message_json
-        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
-        
     if request.method == 'DELETE':
+        page_list = Page_List.objects.filter(article_id=id)
+        resource_list = Resource_List.objects.filter(article_id=id)
+
         page_list.delete()
         resource_list.delete()
         article.delete()
