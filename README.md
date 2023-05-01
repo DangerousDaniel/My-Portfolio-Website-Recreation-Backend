@@ -11,7 +11,7 @@ This backend repo is the Django Python Web Framework with the Django REST Framew
 
 ### [HTTP Calls Plan](Plans/backendPlanMark3.2.txt)
 
-### [Backend Checklist](Plans/backendChecklistMark2.md)
+### [My Website Recreation Project Board](https://github.com/users/DangerousDaniel/projects/3)
 
 ## Framework Resources
 ### [Django](https://www.djangoproject.com/) 
