@@ -21,8 +21,8 @@
 
 - [x] Pubic Read Me
   - [x] About The Repo
-  - [x] HTTP Calls Information 
-  - [x] Resources
+  - [x] Plan Links
+  - [x] Resources Links 
   - [x] Term and Conditions
 
 
