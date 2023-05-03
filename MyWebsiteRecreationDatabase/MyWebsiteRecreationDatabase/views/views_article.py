@@ -58,49 +58,6 @@ def article_all(request, format=None):
         return Response(response)
     
 @api_view(['GET'])
-def article_all_category(request, id, format=None):
-    try:
-        category = Category.objects.get(pk=id)
-    except Category.DoesNotExist:
-        database_message_json= {'Database Message': f"No data found for this id in the {Category.__name__} table."}
-        response_json = database_message_json
-        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
-    
-    if request.method == 'GET':
-        articles = Article.objects.filter(category_id=id)
-
-        articles_json = []
-        for article in articles:
-            page_list = Page_List.objects.filter(article_id=article.article_id)
-            resource_list = Resource_List.objects.filter(article_id=article.article_id)
-
-            pages = [] 
-            for page in page_list:
-                pages.append(page.page_id)
-
-            resources = []
-            for resource in resource_list:
-                resources.append(resource.resource_id)
-
-            articleSerializer = ArticleSerializer(article)   
-            pageSerializer = PageSerializer(pages, many=True)
-            resourceSerializer = ResourceSerializer(resources, many=True)
-
-            article = {'ArticleData': articleSerializer.data,
-                       'PageData': pageSerializer.data,
-                       'ResourceData': resourceSerializer.data}
-            
-            articles_json.append(article)
-
-
-        jsonData = {'Articles': articles_json}
-        database_message_json = {'Database Message':  f"Database select queries was successfully retrieved from the {Article.__name__} and the relationship tables." }
-
-        response = [jsonData, database_message_json]
-        return Response(response)
-
-    
-@api_view(['GET'])
 def article_all_quick_view(request, offset_num=0, limit_num=10, format=None):
     if request.method == 'GET':
         articles = Article.objects.all().order_by('date_last_update').reverse()[offset_num:limit_num]
