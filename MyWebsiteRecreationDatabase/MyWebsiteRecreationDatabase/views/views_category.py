@@ -21,8 +21,8 @@ def category_all(request, format=None):
 
         categorySerializer = CategorySerializer(categories, many=True)
 
-        jsonData = {'Categories': categorySerializer.data}
-        databaseMessageJson = {'Database Message': f"Database select queries was successfully retrieved from the {Category.__name__} table."}
+        json_data = {'Categories': categorySerializer.data}
+        database_message_json = {'Database Message': f"Database select queries was successfully retrieved from the {Category.__name__} table."}
         
-        response = [jsonData, databaseMessageJson]
+        response = [json_data, database_message_json]
         return Response(response)
