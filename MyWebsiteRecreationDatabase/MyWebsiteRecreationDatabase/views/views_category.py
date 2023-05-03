@@ -18,17 +18,5 @@ from rest_framework import status
 def category_all(request, format=None):
     if request.method == 'GET':
         categories = Category.objects.all()
-
         categorySerializer = CategorySerializer(categories, many=True)
-
-        categoryJson = {}
-        for i in range(len(categorySerializer.data)):
-            categoryData = categorySerializer.data[i]
-            
-            categoryJson[f'Category {i + 1}'] = categoryData
-
-        jsonData = {'Categories': categoryJson}
-        databaseMessageJson = {'Database Message': f"Database select queries was successfully retrieved from the {Category.__name__} table."}
-        
-        response = [jsonData, databaseMessageJson]
-        return Response(response)
+        return Response(categorySerializer.data)
