@@ -34,6 +34,19 @@ def article_all(request, format=None):
 
         response_json = [article_json, database_message_json]
         return Response(response_json)
+    
+@api_view(['GET'])
+def article_all_quick_view(request, offset_num=0, limit_num=10, format=None):
+    if request.method == 'GET':
+        articles = Article.objects.all().order_by('date_last_update').reverse()[offset_num:limit_num]
+
+        serializer = ArticleSerializer(articles, many=True)
+
+        article_json = {'Articles': serializer.data}
+        database_message_json = {'Database Message':f"Database select query was successfully retrieved from the {Article.__name__} table." }
+
+        response_json = [article_json, database_message_json]
+        return Response(response_json)
 
 
 @api_view(['GET'])

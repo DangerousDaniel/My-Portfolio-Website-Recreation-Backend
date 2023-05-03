@@ -34,6 +34,8 @@ urlpatterns = [
 
     path('category/all', views_category.category_all),
     path('article/all', views_article.article_all),
+    path('article/all/quick-view', views_article.article_all_quick_view),
+    path('article/all/quick-view/<int:offset_num>/<int:limit_num>', views_article.article_all_quick_view),  
     path('article/all/quick-view/category/<int:id>', views_article.article_all_quick_view_category),
     path('article/all/quick-view/category/<int:id>/<int:offset_num>/<int:limit_num>', views_article.article_all_quick_view_category),
     path('article/detail/<int:id>', views_article.article_detail),
