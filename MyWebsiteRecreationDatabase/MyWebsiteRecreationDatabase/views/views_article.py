@@ -27,13 +27,35 @@ def article_all(request, format=None):
     if request.method == 'GET':
         articles = Article.objects.all()
 
-        serializer = ArticleSerializer(articles, many=True)        
+        articles_json = []
+        for article in articles:
+            page_list = Page_List.objects.filter(article_id=article.article_id)
+            resource_list = Resource_List.objects.filter(article_id=article.article_id)
 
-        article_json = {'Articles': serializer.data}
-        database_message_json = {'Database Message':f"Database select query was successfully retrieved from the {Article.__name__} table." }
+            pages = [] 
+            for p in page_list:
+                pages.append(p.page_id)
 
-        response_json = [article_json, database_message_json]
-        return Response(response_json)
+            resources = []
+            for r in resource_list:
+                resources.append(r.resource_id)
+
+            articleSerializer = ArticleSerializer(article)   
+            pageSerializer = PageSerializer(pages, many=True)
+            resourceSerializer = ResourceSerializer(resources, many=True)
+
+            article = {'ArticleData': articleSerializer.data,
+                       'PageData': pageSerializer.data,
+                       'ResourceData': resourceSerializer.data}
+            
+            articles_json.append(article)
+
+
+        jsonData = {'Articles': articles_json}
+        database_message_json = {'Database Message':  f"Database select queries was successfully retrieved from the {Article.__name__} and the relationship tables." }
+
+        response = [jsonData, database_message_json]
+        return Response(response)
     
 @api_view(['GET'])
 def article_all_category(request, id, format=None):
@@ -48,19 +70,19 @@ def article_all_category(request, id, format=None):
         articles = Article.objects.filter(category_id=id)
 
         articles_json = []
-        for a in articles:
-            page_list = Page_List.objects.filter(article_id=id)
-            resource_list = Resource_List.objects.filter(article_id=id)
+        for article in articles:
+            page_list = Page_List.objects.filter(article_id=article.article_id)
+            resource_list = Resource_List.objects.filter(article_id=article.article_id)
 
             pages = [] 
-            for p in page_list:
-                pages.append(p.page_id)
+            for page in page_list:
+                pages.append(page.page_id)
 
             resources = []
-            for r in resource_list:
-                resources.append(r.resource_id)
+            for resource in resource_list:
+                resources.append(resource.resource_id)
 
-            articleSerializer = ArticleSerializer(a)   
+            articleSerializer = ArticleSerializer(article)   
             pageSerializer = PageSerializer(pages, many=True)
             resourceSerializer = ResourceSerializer(resources, many=True)
 

@@ -6,6 +6,11 @@ Category
 Article
     GET: article/all (Done)
         get all article
+            join 
+                page list
+                pages
+                resource list
+                resources
 
     GET: article/all/category/<id> (Done)
         get all article by category
