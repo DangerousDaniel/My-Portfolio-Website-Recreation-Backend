@@ -1,3 +1,7 @@
+Category
+    GET: category/all (Done)
+        get all category
+
 Article
     GET: article/all (Done)
         get all article

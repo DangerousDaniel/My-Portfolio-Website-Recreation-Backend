@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 21, 2023
-    Last Updated: May 3, 2023
+    Last Updated: May 4, 2023
     Description: This class is where you create all the urls for your REST API.
     Notes:
     Resources: 
@@ -31,6 +31,7 @@ from MyWebsiteRecreationDatabase.views import views_article
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('category/all', views_category.category_all),
 
     path('article/all', views_article.article_all),
     path('article/all/quick-view', views_article.article_all_quick_view),
