@@ -44,15 +44,15 @@ def article_all(request, format=None):
             pageSerializer = PageSerializer(pages, many=True)
             resourceSerializer = ResourceSerializer(resources, many=True)
 
-            article = {'ArticleData': articleSerializer.data,
-                       'PageData': pageSerializer.data,
-                       'ResourceData': resourceSerializer.data}
+            article = {'articleData': articleSerializer.data,
+                       'pageData': pageSerializer.data,
+                       'resourceData': resourceSerializer.data}
             
             articles_json.append(article)
 
 
-        jsonData = {'Articles': articles_json}
-        database_message_json = {'Database Message':  f"Database select queries was successfully retrieved from the {Article.__name__} and the relationship tables." }
+        jsonData = {'articles': articles_json}
+        database_message_json = {'databaseMessage':  f"Database select queries was successfully retrieved from the {Article.__name__} and the relationship tables." }
 
         response = [jsonData, database_message_json]
         return Response(response)
@@ -64,8 +64,8 @@ def article_all_quick_view(request, offset_num=0, limit_num=30, format=None):
 
         serializer = ArticleSerializer(articles, many=True)
 
-        article_json = {'Articles': serializer.data}
-        database_message_json = {'Database Message':f"Database select query was successfully retrieved from the {Article.__name__} table." }
+        article_json = {'articles': serializer.data}
+        database_message_json = {'databaseMessage':f"Database select query was successfully retrieved from the {Article.__name__} table." }
 
         response_json = [article_json, database_message_json]
         return Response(response_json)
@@ -76,7 +76,7 @@ def article_all_quick_view_category(request, id, offset_num=0, limit_num=30, for
     try:
         category = Category.objects.get(pk=id)
     except Category.DoesNotExist:
-        database_message_json= {'Database Message': f"No data found for this id in the {Category.__name__} table."}
+        database_message_json= {'databaseMessage': f"No data found for this id in the {Category.__name__} table."}
         response_json = database_message_json
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
@@ -85,8 +85,8 @@ def article_all_quick_view_category(request, id, offset_num=0, limit_num=30, for
 
         serializer = ArticleSerializer(articles, many=True)
 
-        article_json = {'Articles': serializer.data}
-        database_message_json = {'Database Message':f"Database select query was successfully retrieved from the {Article.__name__} table." }
+        article_json = {'articles': serializer.data}
+        database_message_json = {'databaseMessage':f"Database select query was successfully retrieved from the {Article.__name__} table." }
 
         response_json = [article_json, database_message_json]
         return Response(response_json)
@@ -96,7 +96,7 @@ def article_detail(request, id, format=None):
     try:
         article = Article.objects.get(pk=id)
     except Article.DoesNotExist:
-        database_message_json= {'Database Message': f"No data found for this id in the {Article.__name__} table."}
+        database_message_json= {'databaseMessage': f"No data found for this id in the {Article.__name__} table."}
         response_json = database_message_json
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
     
@@ -118,12 +118,12 @@ def article_detail(request, id, format=None):
         
         resourceSerializer = ResourceSerializer(resources, many=True)
     
-        page_context_json = {'Pages': pageSerializer.data, 'Resources': resourceSerializer.data}
+        page_context_json = {'pages': pageSerializer.data, 'resources': resourceSerializer.data}
 
-        article_data_json = {f'Article Data': articleSerializer.data, 'Page Context': page_context_json}
+        article_data_json = {f'article Data': articleSerializer.data, 'page Context': page_context_json}
 
         article_json = {article_data_json}
-        database_message_json = {'Database Message':  f"Database select queries was successfully retrieved from the {Article.__name__} and the relationship tables." }
+        database_message_json = {'databaseMessage':  f"Database select queries was successfully retrieved from the {Article.__name__} and the relationship tables." }
 
         response_json = [article_json, database_message_json]
         return Response(response_json)
@@ -134,7 +134,7 @@ def article_delete_relationship_data(request, id, format=None):
     try:
         article = Article.objects.get(pk=id)
     except Article.DoesNotExist:
-        database_message_json= {'Database Message': f"No data found for this id in the {Article.__name__} table."}
+        database_message_json= {'databaseMessage': f"No data found for this id in the {Article.__name__} table."}
         response_json = database_message_json
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
@@ -146,7 +146,7 @@ def article_delete_relationship_data(request, id, format=None):
         resource_list.delete()
         article.delete()
         
-        database_message_json = {'Database Message':  f"Data has successfully delete for this id in the {Article.__name__} and the relationship tables." }
+        database_message_json = {'databaseMessage':  f"Data has successfully delete for this id in the {Article.__name__} and the relationship tables." }
 
         response_json = [database_message_json]
         return Response(response_json)
