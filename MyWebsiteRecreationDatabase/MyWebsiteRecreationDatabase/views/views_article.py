@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 26, 2023
-    Last Updated: May 4, 2023
+    Last Updated: May 5, 2023
     Description: This is the class for article views.
     Notes:
     Resources: 
@@ -122,7 +122,7 @@ def article_detail(request, id, format=None):
 
         article_data_json = {f'Article Data': articleSerializer.data, 'Page Context': page_context_json}
 
-        article_json = {f'Article {id}': article_data_json}
+        article_json = {article_data_json}
         database_message_json = {'Database Message':  f"Database select queries was successfully retrieved from the {Article.__name__} and the relationship tables." }
 
         response_json = [article_json, database_message_json]
