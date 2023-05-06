@@ -45,8 +45,8 @@ def article_all(request, format=None):
             resourceSerializer = ResourceSerializer(resources, many=True)
 
             article = {'articleData': articleSerializer.data,
-                       'pageData': pageSerializer.data,
-                       'resourceData': resourceSerializer.data}
+                       'pages': pageSerializer.data,
+                       'resources': resourceSerializer.data}
             
             articles_json.append(article)
 
