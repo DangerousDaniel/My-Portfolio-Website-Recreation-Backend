@@ -1,6 +1,9 @@
 Category
     GET: category/all (Done)
         get all category
+    
+    GET: category/detail/<id> (Done)
+         get a category by id
 
 Article
     GET: article/all (Done)
