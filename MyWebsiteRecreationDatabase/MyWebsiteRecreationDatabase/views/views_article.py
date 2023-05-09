@@ -177,7 +177,7 @@ def article_delete_relationship_data(request, id, format=None):
         database_json = {'database': database_list_json}
         
         response_json = [database_json]
-        return Response(response_json)
+        return Response(response_json, status=status.HTTP_204_NO_CONTENT)
 
             
 
