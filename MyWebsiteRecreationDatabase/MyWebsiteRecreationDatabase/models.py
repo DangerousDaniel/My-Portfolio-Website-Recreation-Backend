@@ -142,15 +142,6 @@ class Article(models.Model):
     def __str__(self) -> str:
         return f"{self.name} | {self.author} | {self.image_preview} | {self.category_id} | {self.date_created} | {self.date_last_update} | {self.page_list_id} | {self.image_list_id} | {self.video_lits_id} | {[self.resource_list_id]}"
 
-class Footer_Information(models.Model):
-    footer_information_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    resource_list_id = models.ForeignKey(Resource_List, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return  f"{self.name} | {self.description} | {self.resource_list_id}"
-
 class About(models.Model):
     about_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=255)
@@ -167,3 +158,12 @@ class Resume(models.Model):
 
     def __str__(self):
         return  f"{self.name} | {self.resource_list_id}"
+    
+class Footer_Information(models.Model):
+    footer_information_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    resource_list_id = models.ForeignKey(Resource_List, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return  f"{self.name} | {self.description} | {self.resource_list_id}"
