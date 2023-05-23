@@ -17,7 +17,6 @@ class Category(models.Model):
     def __str__(self) -> str:
         return f"{self.name}"
 
-#region Page
 class Page(models.Model):
     page_id =  models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     paragraph = models.TextField()
@@ -40,11 +39,7 @@ class Page_List(models.Model):
 
     def __str__(self):
         return  f"{self.name} | {self.page_bridge_id}"
-    
-
-#endregion
-    
-#region Image    
+ 
 class Image(models.Model):
     image_id =  models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=255)
@@ -62,15 +57,13 @@ class Image_Bridge(models.Model):
         return f"{self.image_id} | {self.order} | {self.image_id}"
 
 class Image_List(models.Model):
-    resource_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    image_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=255)
     image_bridge_id = models.ForeignKey(Image_Bridge, on_delete=models.PROTECT)
 
     def __str__(self):
         return  f"{self.name} | {self.image_bridge_id}"
-#endregion
 
-#region Video
 class Video(models.Model):
     video_id =  models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=255)
@@ -88,21 +81,19 @@ class Video_Bridge(models.Model):
         return f"{self.video_id} | {self.order} | {self.video_id}"
     
 class Video_List(models.Model):
-    resource_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    video_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=255)
     video_bridge_id = models.ForeignKey(Video_Bridge, on_delete=models.PROTECT)
 
     def __str__(self):
         return  f"{self.name} | {self.video_bridge_id}"
-#endregion
 
-#region Resource 
 class Resource(models.Model):
     resource_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=255)
     description = models.TextField()
     link = models.CharField(max_length=255)
-    image_link =  models.CharField(max_length=255)
+    image_link =  models.CharField(max_length=255, blank=True)
 
     def __str__(self) -> str:
         return f"{self.name} | {self.description} | {self.link}"
@@ -121,8 +112,6 @@ class Resource_List(models.Model):
 
     def __str__(self):
         return  f"{self.name} | {self.resource_bridge_id}"
-
-#endregion
 
 class Article(models.Model):
     article_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
