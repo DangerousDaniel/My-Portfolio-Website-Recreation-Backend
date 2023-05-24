@@ -6,13 +6,25 @@ Category
          get a category by id
 
 Article
-    GET: article/all (Done)
+    GET: article/all 
         get all article
             join 
-                page list
-                pages
-                resource list
-                resources
+                Page_List
+                Page_Bridge
+                Page
+
+                Image_List
+                Image_Bridge
+                Image
+
+                Video_List
+                Video_Bridge
+                Video_List
+
+                Resource_List
+                Resource_Bridge
+                Resource
+
 
      GET: article/all/quick-view (Done)
         get all article order by date_last_update desc

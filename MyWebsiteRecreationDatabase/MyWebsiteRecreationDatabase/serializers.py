@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 21, 2023
-    Last Updated: May 23, 2023
+    Last Updated: May 24, 2023
     Description: This is the class serialize all your data to JSON from a python object.
     Notes:
     Resources: 
@@ -47,27 +47,27 @@ class PageSerializer(serializers.ModelSerializer):
 class PageBridgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page_Bridge
-        fields = ['page_bridge_id', 'page_id', 'order']
+        fields = ['page_bridge_id', 'page_id', 'order', 'page_list_id']
 
 class PageListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page_List
-        fields = ['page_list_id ', 'name', 'page_bridge_id']
+        fields = ['page_list_id ', 'name']
 
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
-        fields = ['image_id', 'name', 'link']
+        fields = ['image_id', 'name', 'description', 'link']
 
 class ImageBridgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image_Bridge
-        fields = ['image_bridge_id', 'image_id', 'order']
+        fields = ['image_bridge_id', 'image_id', 'order', 'image_list_id']
 
 class ImageListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image_List
-        fields = ['image_list_id ', 'name', 'image_bridge_id']
+        fields = ['image_list_id ', 'name']
 
 class VideoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -77,12 +77,12 @@ class VideoSerializer(serializers.ModelSerializer):
 class VideoBridgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video_Bridge
-        fields = ['video_bridge_id', 'video_id', 'order']
+        fields = ['video_bridge_id', 'video_id', 'order', 'video_list_id']
 
 class VideoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video_List
-        fields = ['video_list_id ', 'name', 'video_bridge_id']
+        fields = ['video_list_id ', 'name']
 
 class ResourceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -92,12 +92,12 @@ class ResourceSerializer(serializers.ModelSerializer):
 class ResourceBridgeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resource_Bridge
-        fields = ['resource_bridge_id', 'resource_id']
+        fields = ['resource_bridge_id', 'resource_id', 'resource_list_id']
 
 class ResourceListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resource_List
-        fields = ['resource_list_id', 'name', 'resource_bridge_id']
+        fields = ['resource_list_id', 'name']
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
