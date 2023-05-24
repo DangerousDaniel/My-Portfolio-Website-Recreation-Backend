@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 21, 2023
-    Last Updated: May 23, 2023
+    Last Updated: May 24, 2023
     Description: This is the class for registering your all table to the Django Admin. 
     Notes:
     Resources: 
@@ -12,9 +12,9 @@ from django.contrib import admin
 
 from .models import Category
 
-from .models import Page
-from .models import Page_Bridge
-from .models import Page_List
+from .models import Paragraph
+from .models import Paragraph_Bridge
+from .models import Paragraph_List
 
 from .models import Image
 from .models import Image_Bridge
@@ -36,9 +36,9 @@ from .models import Footer_Information
 
 admin.site.register(Category)
 
-admin.site.register(Page)
-admin.site.register(Page_Bridge)
-admin.site.register(Page_List)
+admin.site.register(Paragraph)
+admin.site.register(Paragraph_Bridge)
+admin.site.register(Paragraph_List)
 
 admin.site.register(Image)
 admin.site.register(Image_Bridge)

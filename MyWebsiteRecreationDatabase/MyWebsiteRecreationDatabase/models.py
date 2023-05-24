@@ -17,28 +17,29 @@ class Category(models.Model):
     def __str__(self) -> str:
         return f"{self.name}"
 
-class Page(models.Model):
-    page_id =  models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    paragraph = models.TextField()
+class Paragraph(models.Model):
+    paragraph_id =  models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    name = models.CharField(max_length=255) 
+    description = models.TextField()
 
     def __str__(self) -> str:
-        return f"{self.paragraph}"
+        return f"{self.name} | {self.description}"
     
-class Page_List(models.Model):
-    page_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+class Paragraph_List(models.Model):
+    paragraph_list_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=255) 
    
     def __str__(self):
         return  f"{self.name}"
 
-class Page_Bridge(models.Model):
-    page_bridge_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    page_id = models.ForeignKey(Page, on_delete=models.PROTECT)
+class Paragraph_Bridge(models.Model):
+    paragraph_bridge_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+    paragraph_id = models.ForeignKey(Paragraph, on_delete=models.PROTECT)
     order = models.IntegerField()
-    page_list_id = models.ForeignKey(Page_List, on_delete=models.PROTECT)
+    paragraph_list_id = models.ForeignKey(Paragraph_List, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
-        return f"{self.page_id} | {self.page_id} | {self.order} | {self.page_list_id}"
+        return f"{self.paragraph_id} | {self.order} | {self.paragraph_list_id}"
  
 class Image(models.Model):
     image_id =  models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
@@ -124,13 +125,13 @@ class Article(models.Model):
     max_order = models.IntegerField() 
     date_created = models.DateField()
     date_last_update = models.DateField(auto_created=True)
-    page_list_id = models.ForeignKey(Page_List, on_delete=models.PROTECT)
+    paragraph_list_id = models.ForeignKey(Paragraph_List, on_delete=models.PROTECT)
     image_list_id = models.ForeignKey(Image_List, on_delete=models.PROTECT)
     video_lits_id = models.ForeignKey(Video_List, on_delete=models.PROTECT, blank=True, null=True)
     resource_list_id = models.ForeignKey(Resource_List, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
-        return f"{self.name} | {self.author} | {self.image_preview} | {self.category_id} | {self.date_created} | {self.date_last_update} | {self.page_list_id} | {self.image_list_id} | {self.video_lits_id} | {self.resource_list_id}"
+        return f"{self.name} | {self.author} | {self.summary} | {self.image_preview} | {self.category_id} | {self.date_created} | {self.date_last_update} | {self.paragraph_list_id} | {self.image_list_id} | {self.video_lits_id} | {self.resource_list_id}"
 
 class About(models.Model):
     about_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')

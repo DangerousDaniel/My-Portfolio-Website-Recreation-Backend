@@ -12,9 +12,9 @@ from rest_framework import serializers
 
 from .models import Category
 
-from .models import Page
-from .models import Page_Bridge
-from .models import Page_List
+from .models import Paragraph
+from .models import Paragraph_Bridge
+from .models import Paragraph_List
 
 from .models import Image
 from .models import Image_Bridge
@@ -39,20 +39,20 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ['category_id', 'name']
 
-class PageSerializer(serializers.ModelSerializer):
+class ParagraphSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Page
-        fields = ['page_id', 'paragraph']
+        model = Paragraph
+        fields = ['paragraph_id', 'name', 'description']
 
-class PageBridgeSerializer(serializers.ModelSerializer):
+class ParagraphBridgeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Page_Bridge
-        fields = ['page_bridge_id', 'page_id', 'order', 'page_list_id']
+        model = Paragraph_Bridge
+        fields = ['paragraph_bridge_id', 'page_id', 'order', 'paragraph_list_id']
 
-class PageListSerializer(serializers.ModelSerializer):
+class ParagraphListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Page_List
-        fields = ['page_list_id ', 'name']
+        model = Paragraph_List
+        fields = ['paragraph_list_id ', 'name']
 
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -102,7 +102,7 @@ class ResourceListSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ['article_id', 'name', 'author', 'summary', 'image_preview', 'category_id', 'max_order', 'date_created', 'date_last_update', 'page_list_id', 'image_list_id', 'video_lits_id', 'resource_list_id']
+        fields = ['article_id', 'name', 'author', 'summary', 'image_preview', 'category_id', 'max_order', 'date_created', 'date_last_update', 'paragraph_list_id', 'image_list_id', 'video_lits_id', 'resource_list_id']
 
 class AboutSerializer(serializers.ModelSerializer):
     class Meta:

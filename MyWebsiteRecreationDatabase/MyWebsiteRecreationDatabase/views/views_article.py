@@ -12,9 +12,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from ..models import Page
-from ..models import Page_Bridge
-from ..models import Page_List
+from ..models import Paragraph
+from ..models import Paragraph_Bridge
+from ..models import Paragraph_List
 
 from ..models import Image
 from ..models import Image_Bridge
@@ -35,7 +35,7 @@ from ..models import Resume
 from ..models import Footer_Information
 
 from ..serializers import ArticleSerializer
-from ..serializers import PageSerializer
+from ..serializers import ParagraphSerializer
 from ..serializers import ImageSerializer
 from ..serializers import VideoSerializer
 from ..serializers import ResourceSerializer
@@ -48,14 +48,14 @@ def article_all(request, format=None):
         articles_json = []
         for article in articles:    
         
-            page_bridge = Page_Bridge.objects.filter(page_list_id=article.page_list_id)
+            paragraph_bridge = Paragraph_Bridge.objects.filter(paragraph_list_id=article.paragraph_list_id)
             image_bridge = Image_Bridge.objects.filter(image_list_id=article.image_list_id)
             video_bridge = Video_Bridge.objects.filter(video_list_id=article.video_lits_id)
             resource_bridge = Resource_Bridge.objects.filter(resource_list_id=article.resource_list_id)
 
-            pages = []
-            for pb in page_bridge:
-                pages.append(pb.page_id)
+            paragraph = []
+            for pb in paragraph_bridge:
+                paragraph.append(pb.paragraph_id)
 
             images = []
             for ib in image_bridge:
@@ -70,16 +70,32 @@ def article_all(request, format=None):
                 resources.append(rb.resource_id)
             
             articleSerializer = ArticleSerializer(article)
-            pageSerializer = PageSerializer(pages, many=True)
-            imageSerializer = ImageSerializer(images, many=True)
-            videoSerializer = VideoSerializer(videos, many=True)
             resourceSerializer = ResourceSerializer(resources, many=True)
+            
+            page_context_json_oder = []
+            for i in range(article.max_order + 1):
+                for pb in paragraph_bridge:
+                    if i == pb.order:
+                        paragraphSerializer = ParagraphSerializer(pb.paragraph_id)
+                        paragraph = {'paragraph': paragraphSerializer.data}
+                        page_context_json_oder.append(paragraph)
 
-            article_json = {'articleData': articleSerializer.data,
-                            'pages': pageSerializer.data,
-                            'images': imageSerializer.data,
-                            'videos': videoSerializer.data,
-                            'resources': resourceSerializer.data}
+                for ib in image_bridge:
+                    if i == ib.order:
+                        imageSerializer = ImageSerializer(ib.image_id)
+                        image = {'image': imageSerializer.data}
+                        page_context_json_oder.append(image)
+
+                for vb in video_bridge:
+                    if i == vb.order:
+                        videoSerializer = VideoSerializer(vb.video_id)
+                        video = {'video': videoSerializer.data}
+                        page_context_json_oder.append(video)
+
+            resources_json = {'resources': resourceSerializer.data}
+            page_context_json_oder.append(resources_json)
+
+            article_json = {'articleData': articleSerializer.data, 'page_context': page_context_json_oder}
             
             articles_json.append(article_json)
 
