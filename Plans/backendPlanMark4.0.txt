@@ -28,23 +28,23 @@ Article (Done)
             stored paragraph, image, and video by order
 
 
-     GET: article/all/quick-view 
+     GET: article/all/quick-view (Done)
         get all article order by date_last_update desc
         
-    GET: article/all/quick-view/<offset_num>/<limit_num> 
+    GET: article/all/quick-view/<offset_num>/<limit_num> (Done)
         This is same one as above but you can limit the row and offset them by user inputs.
         get all article limit <limitNum> offset <offsetNum>
        
 
-    GET: article/all/quick-view/category/<id> 
+    GET: article/all/quick-view/category/<id> (Done)
         get all article by category order by date_last_update desc
        
 
-    GET: article/all/quick-view/<category_id>/<offset_num>/<limit_num> 
+    GET: article/all/quick-view/<category_id>/<offset_num>/<limit_num> (Done)
         This is same one as above but you can limit the row and offset them by user inputs.
         get all article by category limit <limitNum> offset <offsetNum>
             
-    GET: article/detail/<id> 
+    GET: article/detail/<id> (Done)
         get a article by id
             join 
                 Paragraph_List
@@ -64,3 +64,11 @@ Article (Done)
                 Resource
             
             stored paragraph, image, and video by order
+
+    DElETE: article/delete-relationship-data/<id> 
+        delete article 
+        delete article relationship with the article 
+            Paragraph_List
+            Image_List
+            Video_List
+            Resource_List

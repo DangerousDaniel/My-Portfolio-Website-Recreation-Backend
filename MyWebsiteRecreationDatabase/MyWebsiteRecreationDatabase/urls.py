@@ -40,6 +40,7 @@ urlpatterns = [
     path('article/all/quick-view/category/<int:id>', views_article.article_all_quick_view_category),
     path('article/all/quick-view/category/<int:id>/<int:offset_num>/<int:limit_num>', views_article.article_all_quick_view_category),
     path('article/detail/<int:id>', views_article.article_detail),
+    path('article/delete-relationship-data/<int:id>', views_article.article_delete_relationship_data),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

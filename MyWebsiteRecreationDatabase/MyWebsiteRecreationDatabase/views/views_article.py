@@ -13,10 +13,10 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from ..models import Category
-from ..models import Paragraph_Bridge
-from ..models import Image_Bridge
-from ..models import Video_Bridge
-from ..models import Resource_Bridge
+from ..models import Paragraph_List
+from ..models import Image_List
+from ..models import Video_List
+from ..models import Resource_List
 from ..models import Article
 
 from ..serializers import ArticleSerializer
@@ -33,10 +33,10 @@ def article_all(request, format=None):
         articles_json = []
         for article in articles:    
         
-            paragraph_bridge = Paragraph_Bridge.objects.filter(paragraph_list_id=article.paragraph_list_id)
-            image_bridge = Image_Bridge.objects.filter(image_list_id=article.image_list_id)
-            video_bridge = Video_Bridge.objects.filter(video_list_id=article.video_lits_id)
-            resource_bridge = Resource_Bridge.objects.filter(resource_list_id=article.resource_list_id)
+            paragraph_bridge = Paragraph_List.objects.filter(article_id=article.article_id)
+            image_bridge = Image_List.objects.filter(article_id=article.article_id)
+            video_bridge = Video_List.objects.filter(article_id=article.article_id)
+            resource_bridge = Resource_List.objects.filter(article_id=article.article_id)
 
             paragraph = []
             for pb in paragraph_bridge:
@@ -154,10 +154,10 @@ def article_detail(request, id, format=None):
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
-        paragraph_bridge = Paragraph_Bridge.objects.filter(paragraph_list_id=article.paragraph_list_id)
-        image_bridge = Image_Bridge.objects.filter(image_list_id=article.image_list_id)
-        video_bridge = Video_Bridge.objects.filter(video_list_id=article.video_lits_id)
-        resource_bridge = Resource_Bridge.objects.filter(resource_list_id=article.resource_list_id)
+        paragraph_bridge = Paragraph_List.objects.filter(article_id=article.article_id)
+        image_bridge = Image_List.objects.filter(article_id=article.article_id)
+        video_bridge = Video_List.objects.filter(article_id=article.article_id)
+        resource_bridge = Resource_List.objects.filter(article_id=article.article_id)
 
         paragraph = []
         for pb in paragraph_bridge:
@@ -212,3 +212,36 @@ def article_detail(request, id, format=None):
         
         response_json = [json_data, database_json]
         return Response(response_json)
+    
+@api_view(['DELETE'])
+def article_delete_relationship_data(request, id, format=None):
+    try:
+        article = Article.objects.get(pk=id)
+    except Article.DoesNotExist:
+        database_error_json = {'error': True}
+        database_message_json = {'message': f"No data found for this id in the {Article.__name__} table."}
+        database_list_json = [database_error_json, database_message_json]
+        database_json = {'database': database_list_json}
+        
+        response_json = [database_json]
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'DELETE':
+        paragraph_list = Paragraph_List.objects.filter(article_id=id)
+        image_list = Image_List.objects.filter(article_id=id)
+        video_list = Video_List.objects.filter(article_id=id)
+        resource_list = Resource_List.objects.filter(article_id=id)
+
+        paragraph_list.delete()
+        image_list.delete()
+        video_list.delete()
+        resource_list.delete()
+        article.delete()
+        
+        database_error_json = {'error': False}
+        database_message_json = {'message': f"Data has successfully delete for this id in the {Article.__name__} and the relationship tables."}
+        database_list_json = [database_error_json, database_message_json]
+        database_json = {'database': database_list_json}
+        
+        response_json = [database_json]
+        return Response(response_json, status=status.HTTP_204_NO_CONTENT)
