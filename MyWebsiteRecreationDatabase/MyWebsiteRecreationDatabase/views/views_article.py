@@ -158,6 +158,73 @@ def article_all_quick_view_category(request, id, offset_num=0, limit_num=30, for
     
 @api_view(['GET'])
 def article_detail(request, id, format=None):
-    pass
-            
+    try:
+        article = Article.objects.get(pk=id)
+    except Article.DoesNotExist:
+        database_error_json = {'error': True}
+        database_message_json = {'message': f"No data found for this id in the {Article.__name__} table."}
+        database_list_json = [database_error_json, database_message_json]
+        database_json = {'database': database_list_json}
 
+        response_json = [database_json]
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        paragraph_bridge = Paragraph_Bridge.objects.filter(paragraph_list_id=article.paragraph_list_id)
+        image_bridge = Image_Bridge.objects.filter(image_list_id=article.image_list_id)
+        video_bridge = Video_Bridge.objects.filter(video_list_id=article.video_lits_id)
+        resource_bridge = Resource_Bridge.objects.filter(resource_list_id=article.resource_list_id)
+
+        paragraph = []
+        for pb in paragraph_bridge:
+            paragraph.append(pb.paragraph_id)
+
+        images = []
+        for ib in image_bridge:
+            images.append(ib.image_id)
+
+        videos = []
+        for vb in video_bridge:
+            videos.append(vb.video_id)
+        
+        resources = []
+        for rb in resource_bridge:
+            resources.append(rb.resource_id)
+        
+        articleSerializer = ArticleSerializer(article)
+        resourceSerializer = ResourceSerializer(resources, many=True)
+        
+        page_context_json_oder = []
+        for i in range(article.max_order + 1):
+            for pb in paragraph_bridge:
+                if i == pb.order:
+                    paragraphSerializer = ParagraphSerializer(pb.paragraph_id)
+                    paragraph = {'paragraph': paragraphSerializer.data}
+                    page_context_json_oder.append(paragraph)
+
+            for ib in image_bridge:
+                if i == ib.order:
+                    imageSerializer = ImageSerializer(ib.image_id)
+                    image = {'image': imageSerializer.data}
+                    page_context_json_oder.append(image)
+
+            for vb in video_bridge:
+                if i == vb.order:
+                    videoSerializer = VideoSerializer(vb.video_id)
+                    video = {'video': videoSerializer.data}
+                    page_context_json_oder.append(video)
+
+        resources_json = {'resources': resourceSerializer.data}
+        page_context_json_oder.append(resources_json)
+
+        article_json = {'articleData': articleSerializer.data, 'page_context': page_context_json_oder}
+
+        json_data = {'article': article_json}
+        
+        database_error_json = {'error': False}
+        database_message_json = {'message': f"Database select queries was successfully retrieved from the {Article.__name__} and the relationship tables."}
+        database_list_json = [database_error_json, database_message_json]
+        database_json = {'database': database_list_json}
+        
+        response_json = [json_data, database_json]
+        return Response(response_json)
