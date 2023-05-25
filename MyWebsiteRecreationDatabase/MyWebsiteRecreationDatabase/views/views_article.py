@@ -12,6 +12,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+from ..models import Category
 from ..models import Paragraph
 from ..models import Paragraph_Bridge
 from ..models import Paragraph_List
@@ -129,8 +130,32 @@ def article_all_quick_view(request, offset_num=0, limit_num=30, format=None):
 
 @api_view(['GET'])
 def article_all_quick_view_category(request, id, offset_num=0, limit_num=30, format=None):
-   pass
+    try:
+        category = Category.objects.get(pk=id)
+    except Category.DoesNotExist:
+        database_error_json = {'error': True}
+        database_message_json = {'message': f"No data found for this id in the {Category.__name__} table."}
+        database_list_json = [database_error_json, database_message_json]
+        database_json = {'database': database_list_json}
+        
+        response_json = [database_json]
+        return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
+    if request.method == 'GET':
+        articles = Article.objects.filter(category_id=id).order_by('date_last_update').reverse()[offset_num:limit_num]
+
+        serializer = ArticleSerializer(articles, many=True)
+
+        article_json = {'articles': serializer.data}
+
+        database_error_json = {'error': False}
+        database_message_json = {'message': f"Database select queries was successfully retrieved from the {Article.__name__} table."}
+        database_list_json = [database_error_json, database_message_json]
+        database_json = {'database': database_list_json}
+        
+        response_json = [article_json, database_json]
+        return Response(response_json)
+    
 @api_view(['GET'])
 def article_detail(request, id, format=None):
     pass
