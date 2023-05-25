@@ -13,27 +13,11 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from ..models import Category
-from ..models import Paragraph
 from ..models import Paragraph_Bridge
-from ..models import Paragraph_List
-
-from ..models import Image
 from ..models import Image_Bridge
-from ..models import Image_List
-
-from ..models import Video
 from ..models import Video_Bridge
-from ..models import Video_List
-
-from ..models import Resource
 from ..models import Resource_Bridge
-from ..models import Resource_List
-
 from ..models import Article
-
-from ..models import About
-from ..models import Resume
-from ..models import Footer_Information
 
 from ..serializers import ArticleSerializer
 from ..serializers import ParagraphSerializer

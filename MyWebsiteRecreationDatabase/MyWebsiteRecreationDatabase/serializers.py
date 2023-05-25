@@ -30,10 +30,6 @@ from .models import Resource_List
 
 from .models import Article
 
-from .models import About
-from .models import Resume
-from .models import Footer_Information
-
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -103,18 +99,3 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ['article_id', 'name', 'author', 'summary', 'image_preview', 'category_id', 'max_order', 'date_created', 'date_last_update', 'paragraph_list_id', 'image_list_id', 'video_lits_id', 'resource_list_id']
-
-class AboutSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = About
-        fields = ['about_id', 'name', 'description', 'image_link']
-
-class ResumeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Resume
-        fields = ['resume_id', 'name', 'resource_list_id']
-
-class FooterInformationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Footer_Information
-        fields = ['footer_information_id', 'name', 'description', 'resource_list_id']

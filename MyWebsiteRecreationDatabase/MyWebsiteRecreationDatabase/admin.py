@@ -30,10 +30,6 @@ from .models import Resource_List
 
 from .models import Article
 
-from .models import About
-from .models import Resume
-from .models import Footer_Information
-
 admin.site.register(Category)
 
 admin.site.register(Paragraph)
@@ -53,7 +49,3 @@ admin.site.register(Resource_Bridge)
 admin.site.register(Resource_List)
 
 admin.site.register(Article)
-
-admin.site.register(About)
-admin.site.register(Resume)
-admin.site.register(Footer_Information)
