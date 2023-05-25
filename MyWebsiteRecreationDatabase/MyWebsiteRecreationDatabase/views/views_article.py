@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 26, 2023
-    Last Updated: May 23, 2023
+    Last Updated: May 25, 2023
     Description: This is the class for article views.
     Notes:
     Resources: 
@@ -112,7 +112,20 @@ def article_all(request, format=None):
     
 @api_view(['GET'])
 def article_all_quick_view(request, offset_num=0, limit_num=30, format=None):
-   pass
+   if request.method == 'GET':
+        articles = Article.objects.all().order_by('date_last_update').reverse()[offset_num:limit_num]
+
+        serializer = ArticleSerializer(articles, many=True)
+
+        article_json = {'articles': serializer.data}
+
+        database_error_json = {'error': False}
+        database_message_json = {'message': f"Database select queries was successfully retrieved from the {Article.__name__} table."}
+        database_list_json = [database_error_json, database_message_json]
+        database_json = {'database': database_list_json}
+        
+        response_json = [article_json, database_json]
+        return Response(response_json)
 
 @api_view(['GET'])
 def article_all_quick_view_category(request, id, offset_num=0, limit_num=30, format=None):
@@ -120,10 +133,6 @@ def article_all_quick_view_category(request, id, offset_num=0, limit_num=30, for
 
 @api_view(['GET'])
 def article_detail(request, id, format=None):
-    pass
-
-@api_view(['DELETE'])
-def article_delete_relationship_data(request, id, format=None):
     pass
             
 

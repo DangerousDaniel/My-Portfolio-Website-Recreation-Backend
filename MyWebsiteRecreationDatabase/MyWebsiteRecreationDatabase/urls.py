@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 21, 2023
-    Last Updated: May 8, 2023
+    Last Updated: May 25, 2023
     Description: This class is where you create all the urls for your REST API.
     Notes:
     Resources: 
@@ -40,8 +40,6 @@ urlpatterns = [
     path('article/all/quick-view/category/<int:id>', views_article.article_all_quick_view_category),
     path('article/all/quick-view/category/<int:id>/<int:offset_num>/<int:limit_num>', views_article.article_all_quick_view_category),
     path('article/detail/<int:id>', views_article.article_detail),
-    path('article/delete-relationship-data/<int:id>', views_article.article_delete_relationship_data),
-
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
