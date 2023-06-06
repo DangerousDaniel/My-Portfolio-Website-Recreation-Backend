@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 8, 2023
-    Last Updated: May 25, 2023
+    Last Updated: June 6, 2023
     Description: This where you create the table for the database.
     Notes:
     Resources: 
@@ -47,7 +47,8 @@ class Resource(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     link = models.CharField(max_length=255)
-    image_link =  models.CharField(max_length=255, blank=True)
+    logo_name =  models.CharField(max_length=255, blank=True)
+    logo_local_filepath =  models.CharField(max_length=255, blank=True)
 
     def __str__(self) -> str:
         return f"{self.name} | {self.description} | {self.link} | {self.image_link}"
