@@ -65,7 +65,7 @@ Article (Done)
             
             stored paragraph, image, and video by order
 
-    DElETE: article/delete-relationship-data/<id> 
+    DElETE: article/delete-relationship-data/<id> (Done)
         delete article 
         delete article relationship with the article 
             Paragraph_List

@@ -51,7 +51,7 @@ class Resource(models.Model):
     logo_local_filepath =  models.CharField(max_length=255, blank=True)
 
     def __str__(self) -> str:
-        return f"{self.name} | {self.description} | {self.link} | {self.image_link}"
+        return f"{self.name} | {self.description} | {self.link} | {self.logo_name} | {self.logo_local_filepath}"
 
 class Article(models.Model):
     article_id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')

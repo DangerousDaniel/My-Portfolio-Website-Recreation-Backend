@@ -50,7 +50,7 @@ class VideoSerializer(serializers.ModelSerializer):
 class ResourceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resource
-        fields = ['resource_id', 'name', 'description', 'link', 'image_link']
+        fields = ['resource_id', 'name', 'description', 'link', 'logo_name', 'logo_local_filepath']
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:

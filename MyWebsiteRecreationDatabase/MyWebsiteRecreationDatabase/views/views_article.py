@@ -80,7 +80,7 @@ def article_all(request, format=None):
             resources_json = {'resources': resourceSerializer.data}
             page_context_json_oder.append(resources_json)
 
-            article_json = {'articleData': articleSerializer.data, 'page_context': page_context_json_oder}
+            article_json = {'articleData': articleSerializer.data, 'pageContext': page_context_json_oder}
             
             articles_json.append(article_json)
 
@@ -201,7 +201,7 @@ def article_detail(request, id, format=None):
         resources_json = {'resources': resourceSerializer.data}
         page_context_json_oder.append(resources_json)
 
-        article_json = {'articleData': articleSerializer.data, 'page_context': page_context_json_oder}
+        article_json = {'articleData': articleSerializer.data, 'pageContext': page_context_json_oder}
 
         json_data = {'article': article_json}
         
