@@ -5,24 +5,40 @@ Category
     GET: category/detail/<id> (Done)
          get a category by id
 
-Article
-    GET: article/all (Done)
+Article (Done)
+    GET: article/all 
         get all article
             join 
-                page list
-                pages
-                resource list
-                resources
+                Paragraph_List
+                Paragraph_Bridge
+                Paragraph
+
+                Image_List
+                Image_Bridge
+                Image
+
+                Video_List
+                Video_Bridge
+                Video_List
+
+                Resource_List
+                Resource_Bridge
+                Resource
+            
+            stored paragraph, image, and video by order
+
 
      GET: article/all/quick-view (Done)
         get all article order by date_last_update desc
-
+        
     GET: article/all/quick-view/<offset_num>/<limit_num> (Done)
         This is same one as above but you can limit the row and offset them by user inputs.
         get all article limit <limitNum> offset <offsetNum>
+       
 
     GET: article/all/quick-view/category/<id> (Done)
         get all article by category order by date_last_update desc
+       
 
     GET: article/all/quick-view/<category_id>/<offset_num>/<limit_num> (Done)
         This is same one as above but you can limit the row and offset them by user inputs.
@@ -31,13 +47,28 @@ Article
     GET: article/detail/<id> (Done)
         get a article by id
             join 
-                page list
-                pages
-                resource list
-                resources
+                Paragraph_List
+                Paragraph_Bridge
+                Paragraph
+
+                Image_List
+                Image_Bridge
+                Image
+
+                Video_List
+                Video_Bridge
+                Video_List
+
+                Resource_List
+                Resource_Bridge
+                Resource
+            
+            stored paragraph, image, and video by order
 
     DElETE: article/delete-relationship-data/<id> (Done)
         delete article 
         delete article relationship with the article 
-            page_list_id
-            resource_list_id
+            Paragraph_List
+            Image_List
+            Video_List
+            Resource_List
