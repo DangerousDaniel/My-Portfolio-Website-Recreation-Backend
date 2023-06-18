@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 21, 2023
-    Last Updated: My 3, 2023
+    Last Updated: June 18, 2023
     Description: This is the settings class. 
     Notes:
     Resources: 
@@ -35,11 +35,11 @@ SECRET_KEY = 'django-insecure-f4%t-p9@m4)q7nu^d*4k0$+*eind)^_mvr7jzvg^n58m%$wylh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '35.227.50.190']
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-       'http://localhost:3000',
+       'http://localhost:3000', 'http://35.227.50.190',
 )
 
 
