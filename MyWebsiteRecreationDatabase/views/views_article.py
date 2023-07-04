@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 26, 2023
-    Last Updated: May 25, 2023
+    Last Updated: July 4, 2023
     Description: This is the class for article views.
     Notes:
     Resources: 
@@ -31,6 +31,7 @@ def article_all(request, format=None):
         articles = Article.objects.all()
 
         articles_json = []
+        json_data = []
         for article in articles:    
         
             paragraph_bridge = Paragraph_List.objects.filter(article_id=article.article_id)
