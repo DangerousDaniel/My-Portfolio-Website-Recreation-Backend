@@ -1,1 +1,0 @@
-web: gunicorn MyWebsiteRecreationDatabase\MyWebsiteRecreationDatabase\wsgi.py
