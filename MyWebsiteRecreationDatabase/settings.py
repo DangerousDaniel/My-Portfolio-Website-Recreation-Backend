@@ -31,10 +31,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f4%t-p9@m4)q7nu^d*4k0$+*eind)^_mvr7jzvg^n58m%$wylh'
+SECRET_KEY = os.getenv('MY_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.getenv('DEBUG')))
 
 ALLOWED_HOSTS = ['localhost','dangerousdan996-django-backend-86bfbdd18077.herokuapp.com']
 
@@ -99,10 +99,10 @@ WSGI_APPLICATION = 'MyWebsiteRecreationDatabase.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd2bn4het39vvbs',
-        'USER': 'pmeepfsvrclekq',
-        'PASSWORD': '8b1acf0583259c284da45f4f70bbca0b1b02b109f5984499c2ffacbd860aa6b1',
-        'HOST': 'ec2-54-208-11-146.compute-1.amazonaws.com',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
         'PORT': '5432',
     }
 }
