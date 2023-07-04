@@ -18,5 +18,5 @@ This backend repo is the Django Python Web Framework with the Django REST Framew
 ### [Django REST Framework](https://www.django-rest-framework.org/)
 
 ## Term and Conditions
-This backend repo is a portfolio piece for my website recreation. You may read the code, and use it in other repos as long as you modify it for your needs. You may test out the REST API for read function of the backend website, but other CURD functionally must be tested by a fork and cloned down to your computer. The backend link and admin username is available upon request. This repo is owned by Daniel Cox and copyright under the standard copyright license.
+This backend repo is a portfolio piece for my website recreation. You may read the code, and use it in other repos as long as you modify it for your needs. You may test out the REST API by a fork and cloned down the repo to your computer. The backend link and admin username is available upon request. This repo is owned by Daniel Cox and copyright under the standard copyright license.
 
