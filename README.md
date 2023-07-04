@@ -7,7 +7,7 @@ This backend repo is the Django Python Web Framework with the Django REST Framew
 
 ## Backend Resource  
 ### My ERD
-
+![My ERD Mark 3](Plans\ERD\MyPortfolioWebsiteRecreationDatabaseERDMark 3.1.png)
 
 ### [HTTP Calls Plan](Plans/backendPlanMark4.0.txt)
 
