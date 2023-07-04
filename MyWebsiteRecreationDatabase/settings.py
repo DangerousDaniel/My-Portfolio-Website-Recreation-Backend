@@ -98,8 +98,12 @@ WSGI_APPLICATION = 'MyWebsiteRecreationDatabase.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd2bn4het39vvbs',
+        'USER': 'pmeepfsvrclekq',
+        'PASSWORD': '8b1acf0583259c284da45f4f70bbca0b1b02b109f5984499c2ffacbd860aa6b1',
+        'HOST': 'ec2-54-208-11-146.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
