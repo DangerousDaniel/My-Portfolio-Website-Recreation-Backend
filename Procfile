@@ -1,1 +1,1 @@
-web: gunicorn MyWebsiteRecreationDatabase/MyWebsiteRecreationDatabase.wsgi
+web: gunicorn MyWebsiteRecreationDatabase\MyWebsiteRecreationDatabase\wsgi.py
