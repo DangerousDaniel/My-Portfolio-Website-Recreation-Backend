@@ -43,7 +43,7 @@ ALLOWED_HOSTS = ['localhost','dangerousdan996-django-backend-86bfbdd18077.heroku
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-       'http://localhost:3000',
+       'http://localhost:3000' 'https://dangerousdan996-nextjs-frontend.vercel.app/', 'https://www.dangerousdan996.com/',
 )
 
 
