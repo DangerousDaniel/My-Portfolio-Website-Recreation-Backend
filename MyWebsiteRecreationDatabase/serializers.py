@@ -2,7 +2,7 @@
     Project Name: My Portfolio Website Recreation
     Authors: Daniel Cox
     Created Date: April 21, 2023
-    Last Updated: July 3, 2023
+    Last Updated: July 5, 2023
     Description: This is the class serialize all your data to JSON from a python object.
     Notes:
     Resources: 
