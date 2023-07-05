@@ -99,7 +99,7 @@ def article_all(request, format=None):
 @api_view(['GET'])
 def article_all_quick_view(request, offset_num=0, limit_num=30, format=None):
    if request.method == 'GET':
-        articles = Article.objects.all().order_by('date_last_update').reverse()[offset_num:limit_num]
+        articles = Article.objects.all().order_by('date_created').reverse()[offset_num:limit_num]
 
         serializer = ArticleSerializer(articles, many=True)
 
@@ -127,7 +127,7 @@ def article_all_quick_view_category(request, id, offset_num=0, limit_num=30, for
         return Response(response_json, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        articles = Article.objects.filter(category_id=id).order_by('date_last_update').reverse()[offset_num:limit_num]
+        articles = Article.objects.filter(category_id=id).order_by('date_created').reverse()[offset_num:limit_num]
 
         serializer = ArticleSerializer(articles, many=True)
 
