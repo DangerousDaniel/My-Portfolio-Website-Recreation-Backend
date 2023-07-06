@@ -41,6 +41,16 @@ DEBUG = bool(int(os.getenv('DEBUG')))
 
 ALLOWED_HOSTS = ['localhost','dangerousdan996-django-backend-86bfbdd18077.herokuapp.com']
 
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+       'https://localhost:3000', 'https://dangerousdan996-nextjs-frontend.vercel.app', 'https://dangerousdan996.com',
+)
+
+CORS_ALLOW_METHODS = (
+    'GET',
+)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -59,8 +69,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
